@@ -1,3 +1,31 @@
+<?php
+
+require_once 'includes/config.inc.php';
+
+
+
+try{
+    $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "SELECT title, duration, year, genres.genre_name, artists.artist_name, types.type_name 
+            FROM songs 
+            LEFT JOIN genres ON genres.genre_id = songs.genre_id
+            LEFT JOIN artists ON artists.artist_id = songs.artist_id
+            LEFT JOIN types ON artists.artist_type_id = types.type_id
+            WHERE song_id=1001";
+
+    $result = $pdo->query($sql);
+
+}catch (PDOException $e){
+    die( $e->getMessage() ); 
+}
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +37,19 @@
 </head>
 <body>
 
+    <section>
+        <?php
+
+        foreach($result as $row){
+            echo $row['title'] . " | " . $row['duration'] . " | "  . $row['year'] . $row['genre_name'];
+    
+        }
+
+        ?>
+
+
+
+    </section>
 
     <footer>
         <p>
