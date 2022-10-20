@@ -1,0 +1,38 @@
+.nav{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    text-align: center;
+
+}
+.nav li{
+    display:inline-block;
+}
+.nav a{
+    color:whitesmoke;
+    background-color:lightseagreen;
+    display: inline-block;
+    padding:0.5em 1.5em;
+    border-radius: 50px;
+}
+.nav a:hover{
+    background-color: cadetblue;
+}
+.title{
+    text-align: center;
+}
+.song{
+    text-align: center;
+    background-color:lightgrey;
+    padding: 0.5em;
+    border-radius:50px;
+}
+.head{
+    background-color: lightseagreen;
+    color: whitesmoke;
+    padding: 0.5em;
+    border-radius:20px;
+}
+.foot{
+    background-color:lightgrey;
+}
