@@ -1,6 +1,7 @@
 <?php
 
 require_once 'includes/config.inc.php';
+require_once 'single-page-helper.php';
 
 
 
@@ -57,10 +58,12 @@ try{
     <br>
     <section class="song">
         <?php
+        $output = new Output();
+
         foreach($result as $row){
-            echo $row['title'] . " | " . $row['artist_name'] . " | "  . $row['type_name'] . " | " . $row['genre_name'] . " | " . $row['year'] . " | " . $row['duration'];
+            echo $row['title'] . " | " . $row['artist_name'] . " | "  . $row['type_name'] . " | " . $row['genre_name'] . " | " . $row['year'] . " | " . $output->secToMin($row['duration']);
             echo "<h3>Analysis Data<h3>";
-            echo "BPM: " . $row['bpm'] . " | Energy: " . $row['energy'] . " | Artist Type: "  . $row['type_name'] . " | Genre: " . $row['genre_name'] . " | Released: " . $row['year'] . " | Duration: " . $row['duration'];
+            echo "BPM: " . $row['bpm'] . " | Energy: " . $row['energy'] . " | Artist Type: "  . $row['type_name'] . " | Genre: " . $row['genre_name'] . " | Released: " . $row['year'] . " | Popularity: ";
         }
         ?>
     </section>
