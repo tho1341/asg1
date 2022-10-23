@@ -6,6 +6,7 @@ require_once 'single-page-helper.php';
 
 
 try{
+    //NOT FINISHED, NEED TO USE DB CLASSES 
     $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
