@@ -35,10 +35,10 @@ $genre = $musicGateway->getAllGenre();
             
             <label>Artist:</label>
             <select name="artists">
-            <option></option> 
+            <option value='0'></option> 
                 <?php
                     foreach($artists as $row){
-                        echo "<option value='" . $row['song_id'] . "'>" . $row['artist_name'] . "</option>";
+                        echo "<option value='" . $row['artist_name'] . "'>" . $row['artist_name'] . "</option>";
                     }
 
                 ?>
@@ -46,10 +46,10 @@ $genre = $musicGateway->getAllGenre();
             
             <label>Genre:</label>
             <select name="genre">
-            <option></option> 
+            <option value='0'></option>
             <?php
                     foreach($genre as $row){
-                        echo "<option value='" . $row['song_id'] . "'>" . $row['genre_name'] . "</option>";
+                        echo "<option value='" . $row['genre_name'] . "'>" . $row['genre_name'] . "</option>";
                     }
 
                 ?>

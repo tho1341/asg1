@@ -60,10 +60,9 @@ class MusicDB {
     } 
 
     //gets all for the single page
-    public function getAllForSingle($artistID) { 
+    public function getAllForSingle($song) { 
         $sql = self::$baseSQL . " WHERE song_id=?"; 
-        $statement = DBHelper::runQuery($this->pdo, $sql, 
-        Array($artistID)); 
+        $statement = DBHelper::runQuery($this->pdo, $sql, Array($song)); 
         return $statement->fetchAll(); 
     } 
 
@@ -78,6 +77,24 @@ class MusicDB {
         $statement = DBHelper::runQuery($this->pdo, $sql, null); 
         return $statement->fetchAll(); 
     } 
+    //dunno if use = or LIKE, both work
+    public function getSongArtist($artist) { 
+        $sql = self::$baseSQL . " WHERE artists.artist_name=?"; 
+        $statement = DBHelper::runQuery($this->pdo, $sql, Array($artist)); 
+        return $statement->fetchAll(); 
+    } 
+    public function getSongGenre($genre) { 
+        $sql = self::$baseSQL . " WHERE genres.genre_name LIKE ?"; 
+        $statement = DBHelper::runQuery($this->pdo, $sql, Array($genre)); 
+        return $statement->fetchAll(); 
+    } 
 
+    public function getSongTitle($title) { 
+        $sql = self::$baseSQL . " WHERE title LIKE :search"; 
+        $statement = $this->pdo->prepare($sql);
+        $statement->bindValue(":search", '%' . $_POST['title'] . '%');
+        $statement->execute();
+        return $statement->fetchAll(); 
+    } 
 } 
 

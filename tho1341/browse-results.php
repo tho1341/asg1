@@ -11,9 +11,24 @@ $musicGateway = new MusicDB($conn);
 $music = $musicGateway->getAll();
 
 //conditional to see if came from search page
-if(isset($_POST['file'])){
-echo "yay";
+if(isset($_POST['artists']) && $_POST['artists']!=0){
+    $music = $musicGateway->getSongArtist($_POST['artists']);
 
+} else if(isset($_POST['genre']) && $_POST['genre']!=0){
+    $music = $musicGateway->getSongGenre($_POST['genre']);
+} else if(isset($_POST['title']) && $_POST['title']!=""){
+    
+    $music = $musicGateway->getSongTitle($_POST['title']);
+
+//     $sql = "SELECT title, duration, year, genres.genre_name, artists.artist_name, types.type_name, bpm, energy, danceability, liveness, valence, acousticness, speechiness, popularity
+//     FROM songs 
+//     LEFT JOIN genres ON genres.genre_id = songs.genre_id
+//     LEFT JOIN artists ON artists.artist_id = songs.artist_id
+//     LEFT JOIN types ON artists.artist_type_id = types.type_id 
+//     WHERE title LIKE :search";
+// $statement = $conn->prepare($sql);
+// $statement->bindValue(":search", '%' . $_POST['title'] . '%');
+// $statement->execute();
 
 }
 
