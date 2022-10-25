@@ -61,8 +61,10 @@ $genre = $musicGateway->getAllGenre();
             <label>Year</label>
             <br>
             <label><input type="radio" name="year" value="less">Less: </label>
+                <input type="text" name="lessText" size=50/>
             <br>
             <label><input type="radio" name="year" value="great">Greater: </label>
+                <input type="text" name="greatText" size=50/>
             
             <br>
             <br>
@@ -70,9 +72,10 @@ $genre = $musicGateway->getAllGenre();
             <label>Popularity</label>
             <br>
             <label><input type="radio" name="popularity" value="less">Less: </label>
+                <input type="text" name="popLess" size=50/>
             <br>
             <label><input type="radio" name="popularity" value="great">Greater: </label>
-
+                <input type="text" name="popGreat" size=50/>
 
             <br>
 

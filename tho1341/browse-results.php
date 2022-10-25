@@ -30,6 +30,17 @@ if(isset($_POST['artists']) && $_POST['artists']!=0){
 // $statement->bindValue(":search", '%' . $_POST['title'] . '%');
 // $statement->execute();
 
+} else if(isset($_POST['year']) && $_POST['year']=='less'){
+    $music = $musicGateway->getSongYear($_POST['lessText'], null);
+
+} else if(isset($_POST['year']) && $_POST['year']=='great'){
+    $music = $musicGateway->getSongYear(null, $_POST['greatText']);
+    
+}else if(isset($_POST['popularity']) && $_POST['popularity']=='less'){
+    $music = $musicGateway->getSongPop($_POST['popLess'], null);
+
+}else if(isset($_POST['popularity']) && $_POST['popularity']=='great'){
+    $music = $musicGateway->getSongPop(null, $_POST['popGreat']);
 }
 
 

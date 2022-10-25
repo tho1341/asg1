@@ -79,12 +79,12 @@ class MusicDB {
     } 
     //dunno if use = or LIKE, both work
     public function getSongArtist($artist) { 
-        $sql = self::$baseSQL . " WHERE artists.artist_name=?"; 
+        $sql = self::$baseSQL . " WHERE artists.artist_name=? ORDER BY title"; 
         $statement = DBHelper::runQuery($this->pdo, $sql, Array($artist)); 
         return $statement->fetchAll(); 
     } 
     public function getSongGenre($genre) { 
-        $sql = self::$baseSQL . " WHERE genres.genre_name LIKE ?"; 
+        $sql = self::$baseSQL . " WHERE genres.genre_name LIKE ? ORDER BY title"; 
         $statement = DBHelper::runQuery($this->pdo, $sql, Array($genre)); 
         return $statement->fetchAll(); 
     } 
@@ -96,5 +96,29 @@ class MusicDB {
         $statement->execute();
         return $statement->fetchAll(); 
     } 
+
+    public function getSongYear($less, $great) { 
+        if(isset($less)){
+            $sql = self::$baseSQL . " WHERE year < ?"; 
+            $statement = DBHelper::runQuery($this->pdo, $sql, Array($less)); 
+        }else{
+            $sql = self::$baseSQL . " WHERE year > ?"; 
+            $statement = DBHelper::runQuery($this->pdo, $sql, Array($great)); 
+        }
+        return $statement->fetchAll();
+    } 
+    public function getSongPop($less, $great) { 
+        if(isset($less)){
+            $sql = self::$baseSQL . " WHERE popularity < ?"; 
+            $statement = DBHelper::runQuery($this->pdo, $sql, Array($less)); 
+        }else{
+            $sql = self::$baseSQL . " WHERE popularity > ?"; 
+            $statement = DBHelper::runQuery($this->pdo, $sql, Array($great)); 
+        }
+        return $statement->fetchAll();
+    } 
+
+
+
 } 
 
