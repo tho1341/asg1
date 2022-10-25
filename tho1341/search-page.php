@@ -14,6 +14,7 @@ $artists = $musicGateway->getAllArtist();
 
 $genre = $musicGateway->getAllGenre();
 
+
 } catch (Exception $e) { die( $e->getMessage() ); }
 
 ?>
@@ -55,8 +56,26 @@ $genre = $musicGateway->getAllGenre();
                 ?>
             </select>
 
+            <br>
+
+            <label>Year</label>
+            <br>
+            <label><input type="radio" name="year" value="less">Less: </label>
+            <br>
+            <label><input type="radio" name="year" value="great">Greater: </label>
             
-            
+            <br>
+            <br>
+
+            <label>Popularity</label>
+            <br>
+            <label><input type="radio" name="popularity" value="less">Less: </label>
+            <br>
+            <label><input type="radio" name="popularity" value="great">Greater: </label>
+
+
+            <br>
+
             <input type="submit" value="Search" >
         </form>
 
