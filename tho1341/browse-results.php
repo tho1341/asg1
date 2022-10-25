@@ -59,9 +59,6 @@ if(isset($_POST['artists']) && $_POST['artists']!=0){
     <?php
         foreach($music as $row){
             echo $row['title'] . " | " . $row['artist_name'] . " | "  . $row['year'] . " | " . $row['genre_name'] . " | " . $row['popularity'] .  "<br>";
-
-
-
         }
 
     ?>
