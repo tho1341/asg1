@@ -1,6 +1,7 @@
 <?php
 require_once 'includes/config.inc.php';
 require_once 'includes/db-classes.inc.php';
+require_once 'browse-results-helper.php';
 
 
 try{
@@ -8,9 +9,25 @@ try{
 $conn = DBHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
 
 $musicGateway = new MusicDB($conn);
-$music = $musicGateway->getAll();
+//$music = $musicGateway->getAll();
 
 //conditional to see if came from search page
+if(isset($_POST['submit'])){
+    echo 'ehehehehhe';
+    if(empty($_POST['title']) ){
+        echo 'teststestestst';
+    }
+}
+
+$array = ['title', 'artists', 'genre', 'year', 'popularity'];
+
+//foreach($array as $row){
+//    if (empty($_POST[$row])) {
+//        echo "Email is required";
+//}
+//}
+
+//if(isset($_POST['artists']) && !empty($_POST['artists'])){
 if(isset($_POST['artists']) && $_POST['artists']!=0){
     $music = $musicGateway->getSongArtist($_POST['artists']);
 
@@ -42,6 +59,9 @@ if(isset($_POST['artists']) && $_POST['artists']!=0){
 }else if(isset($_POST['popularity']) && $_POST['popularity']=='great'){
     $music = $musicGateway->getSongPop(null, $_POST['popGreat']);
 }
+else if(isset($_POST['showAll'])){
+    $music = $musicGateway->getAll();
+}
 
 
 
@@ -68,10 +88,32 @@ if(isset($_POST['artists']) && $_POST['artists']!=0){
 </head>
 <body>
     <?php
-        foreach($music as $row){
-            echo $row['title'] . " | " . $row['artist_name'] . " | "  . $row['year'] . " | " . $row['genre_name'] . " | " . $row['popularity'] .  "<br>";
-        }
+    
 
+
+    $count=1;
+    while($count<5){
+        foreach($array as $row){
+            if (!empty($_POST[$row])) {
+                foreach($music as $row){
+                    echo $row['title'] . " | " . $row['artist_name'] . " | "  . $row['year'] . " | " . $row['genre_name'] . " | " . $row['popularity'] .  "<br>";
+                }
+            }
+        }
+        $count++;
+    }
+        if($count=5 && !isset($_POST['showAll'])){
+            echo "No input. Please Enter Search Field";
+        }
+        else{
+            listAll($music);
+            //$music = $musicGateway->getAll();
+        }
     ?>
-</body>
+
+    <form action="browse-results.php" method="post">
+    <input type="submit" value="Search" name='showAll'>
+    </form>
+
+    </body>
 </html>

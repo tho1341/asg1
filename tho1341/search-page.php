@@ -79,7 +79,7 @@ $genre = $musicGateway->getAllGenre();
 
             <br>
 
-            <input type="submit" value="Search" >
+            <input type="submit" value="Search">
         </form>
 
 
