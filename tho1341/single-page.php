@@ -1,23 +1,24 @@
 <?php
 
 require_once 'includes/config.inc.php';
+require_once 'includes/db-classes.inc.php';
 require_once 'single-page-helper.php';
 
 
 
 try{
-    //NOT FINISHED, NEED TO USE DB CLASSES 
-    $pdo = new PDO(DBCONNSTRING,DBUSER,DBPASS);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = DBHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
+    $musicGateway = new MusicDB($conn);
 
-    $sql = "SELECT title, duration, year, genres.genre_name, artists.artist_name, types.type_name, bpm, energy, danceability, liveness, valence, acousticness, speechiness, popularity
-            FROM songs 
-            LEFT JOIN genres ON genres.genre_id = songs.genre_id
-            LEFT JOIN artists ON artists.artist_id = songs.artist_id
-            LEFT JOIN types ON artists.artist_type_id = types.type_id
-            WHERE song_id=1001";
+    if(isset($_POST['view'])){
+        $result = $musicGateway->getAllForSingle($_GET['view']);
+    }
+    
+    
 
-    $result = $pdo->query($sql);
+
+
+
 
 }catch (PDOException $e){
     die( $e->getMessage() ); 

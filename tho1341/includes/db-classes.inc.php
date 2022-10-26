@@ -40,7 +40,7 @@ class DBHelper {
     
 class MusicDB { 
     //base sql where every use is based off
-    private static $baseSQL = "SELECT title, duration, year, genres.genre_name, artists.artist_name, types.type_name, bpm, energy, danceability, liveness, valence, acousticness, speechiness, popularity
+    private static $baseSQL = "SELECT title, duration, year, genres.genre_name, artists.artist_name, types.type_name, bpm, energy, danceability, liveness, valence, acousticness, speechiness, popularity, song_id
             FROM songs 
             LEFT JOIN genres ON genres.genre_id = songs.genre_id
             LEFT JOIN artists ON artists.artist_id = songs.artist_id
