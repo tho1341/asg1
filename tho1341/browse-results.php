@@ -106,7 +106,8 @@ else if(isset($_POST['showAll'])){
             echo "No input. Please Enter Search Field";
         }
         else{
-            listAll($music);
+            $output = new listOutput();
+            $output->listAll($music);
             //$music = $musicGateway->getAll();
         }
     ?>
