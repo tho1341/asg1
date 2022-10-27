@@ -73,7 +73,7 @@ class listOutput{
         echo"<head>";
             echo"<title>COMP 3512 Assign1</title>";
             echo"<meta charset=utf-8>";
-            echo"<link rel='stylesheet' href='stylesheet.css'>";
+            echo"<link rel='stylesheet' href='css/stylesheet.css'>";
         echo"</head>";
     }
         
