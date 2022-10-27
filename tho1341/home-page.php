@@ -24,7 +24,21 @@ $out = new listOutput();
     <title>Document</title>
 </head>
 <body>
-    
+<header>
+    <div class="head">
+        <h1>COMP 3512 Assign1<h1>
+        <h2>Tim Ho & Shahmir Qaiser<h2>
+    </div>
+        <nav>
+            <ul class="nav">
+                <li> <a href="home-page.php">Home</a></li>
+                <li> <a href="search-page.php">Search</a></li>
+                <li> <a href="browse-results.php">Browse</a></li>
+                <!-- <li> <form method="post" action="browse-results.php"><input type="submit" value="Browse" name='showAll'></form></li> -->
+                <li> <a href="view-fav.php">Favourites</a></li>
+            </ul>
+        </nav>
+    </header>
 <?php
 
 echo "<div>";
@@ -73,12 +87,13 @@ $out->outputSongs($music);
 echo "</div>";
 
 ?>
-
-
-
-
-
-
-
+<footer class="foot">
+        <p>
+            COMP 3512 Web 2 | 
+            <a href="https://github.com/tho1341">Timothy Ho</a> | 
+            <a href="https://github.com/sqais">Shahmir Qaiser</a> | 
+            <a href="https://github.com/tho1341/asg1.git">GitHub Repo</a>
+        </p>
+    </footer>
 </body>
 </html>
