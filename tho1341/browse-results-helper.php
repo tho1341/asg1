@@ -3,9 +3,15 @@
 class listOutput{
     function listAll($music){
         foreach($music as $row){
-            echo $row['title'] . " | " . $row['artist_name'] . " | "  . $row['year'] . " | " . $row['genre_name'] . " | " . $row['popularity'] . " ";
-            echo "<a href='view-fav.php?id=". $row['song_id'] ."'><button name='view'>Add to Favourites</button></a>";
-            echo "<a href='single-page.php' name='view' value='" . $row['song_id'] .  "'><button name='view' value='" . $row['song_id'] . "'>View</button></a>";
+            echo '<tr>';
+            echo '<td><a href="single-page.php?song_id="' . $row['song_id'] . '">' . $row['title'] . '</a>';
+                echo '<td>'. $row['artist_name'] .'</td>'; 
+                echo '<td>'. $row['year'] .'</td>'; 
+                echo '<td>'. $row['genre_name'] .'</td>'; 
+                echo '<td>'. $row['popularity'] .'</td>'; 
+            echo '<td>'. '<a href="view-fav.php?id='. $row['song_id'] . '">Add to Favourites' . '</a></td>'; 
+            echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">View' . '</a></td>'; 
+            echo "<br>";
             echo "<br>";
         }
     }
