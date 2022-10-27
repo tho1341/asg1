@@ -16,12 +16,9 @@ $favorites = $_SESSION["Favorites"];
 
 if($key = array_search($_GET["song_id"], $favorites)){
     unset($favorites[$key]);
+}else {
+  unset($favorites[0]);
 }
-
-
-//if(array_search($_GET["song_id"], $favorites) == false){
-  //  $favorites[] = $_GET["song_id"];
-//}
 
 //resave array for user session
 $_SESSION["Favorites"] = $favorites;

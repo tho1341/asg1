@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/config.inc.php';
 require_once 'includes/db-classes.inc.php';
-require_once 'browse-results-helper.php';
+require_once 'page-helper.php';
 session_start();
 
 //check if session already running 

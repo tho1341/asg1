@@ -76,7 +76,7 @@ class MusicDB {
         $statement = DBHelper::runQuery($this->pdo, $sql, null); 
         return $statement->fetchAll(); 
     } 
-    //dunno if use = or LIKE, both work
+
     public function getSongArtist($artist) { 
         $sql = self::$baseSQL . " WHERE artists.artist_name=? ORDER BY title"; 
         $statement = DBHelper::runQuery($this->pdo, $sql, Array($artist)); 
@@ -119,7 +119,7 @@ class MusicDB {
 
     //favorite functions 
     public function GetByIDFav($songID){
-        $sql = "SELECT song_id, title, songs.artist_id, artists.artist_name AS art_name, year, popularity
+        $sql = "SELECT song_id, title, songs.artist_id, genres.genre_name, artists.artist_name, year, popularity
                 FROM songs
                 JOIN artists ON artists.artist_id = songs.artist_id
                 JOIN genres ON genres.genre_id = songs.genre_id
