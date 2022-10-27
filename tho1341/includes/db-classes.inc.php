@@ -117,6 +117,17 @@ class MusicDB {
         return $statement->fetchAll();
     } 
 
+    //favorite functions 
+    public function GetByIDFav($songID){
+        $sql = "SELECT song_id, title, songs.artist_id, artists.artist_name AS art_name, year, popularity
+                FROM songs
+                JOIN artists ON artists.artist_id = songs.artist_id
+                JOIN genres ON genres.genre_id = songs.genre_id
+                WHERE songs.artist_id = artists.artist_id AND song_id=?";
+                $statement = DBHelper::runQuery($this->pdo,$sql,Array($songID));
+                return $statement ->FetchAll();
+    }
+
     //home page functions
     public function getTopGenres() { 
         $sql = "SELECT genres.genre_name, count(song_id) as Number

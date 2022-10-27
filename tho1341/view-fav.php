@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/config.inc.php';
+require_once 'includes/db-classes.inc.php';
 
 session_start();
 //initializing empty array
@@ -9,7 +10,10 @@ if(!isset($_SESSION["Favorites"])){
 //retrieve array for this session
 $favorites = $_SESSION["Favorites"];
 
+//$music = $musicGateway->getTopGenres();
+$conn = DBHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
 
+$musicGateway = new MusicDB($conn);
 
 
 
@@ -27,13 +31,19 @@ $favorites = $_SESSION["Favorites"];
     <?php
         //function genFavRows($favArray, $artistDB, $genreDB){
 
-            foreach ($FavArray as $songs){
-                $artist = $artistDB -> getArtistName($songs["artist_id"]);
-                $genre = $genreDB -> getGenreName($songs["genre_id"]);
+            foreach ($favorites as $fav){
+                $favSongs = $musicGateway -> getByIDFav($fav);
+                //$outputFavSongs = $musicGateway -> outputFavSong($favSongs);
+                foreach($favSongs as $row){
+                    echo $row["title"];
+                    echo $_GET["song_id"];
+                }
+                
+                //print_r($favSongs);
             }
         //}
     ?>
-
+<!--
                 <tr>
                     <td><?=$songs["title"]?></td>
                     <td><?=$artist["artist"]?></td>
@@ -41,7 +51,7 @@ $favorites = $_SESSION["Favorites"];
 
                 </tr>
         
-
+ -->
         <br>
         <a href="emptyFavorites.php">Empty Favorites</a>
         <br>
