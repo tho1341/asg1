@@ -41,11 +41,39 @@ try{
     <section class="song">
         <?php
         $output = new listOutput();
+        echo'<table>';
+        echo '<tr>';
+            echo'<th>Title</th>';
+            echo'<th>Artist</th>';
+            echo'<th>Year</th>';
+            echo'<th>Genre</th>';
+            echo'<th>Genre Type</th>';
+            echo'<th>Duration</th>';
+        echo'</tr>';
         foreach($result as $row){
-            echo $row['bpm'] . " | " . $row['energy'] . " | "  . $row['type_name'] . " | " . $row['genre_name'] . " | " . $row['year'] . " | " . $output->secToMin($row['duration']);
-            echo "<h3>Analysis Data<h3>";
-            echo "BPM: " . $row['bpm'] . " | Energy: " . $row['energy'] . " | Artist Type: "  . $row['type_name'] . " | Genre: " . $row['genre_name'] . " | Released: " . $row['year'] . " | Popularity: ";
+            
+            echo '<tr>';
+           // echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">' . $row['title'] . '</a></td>'; 
+                echo '<td>'. $row['title'] .'</td>'; 
+                echo '<td>'. $row['artist_name'] .'</td>'; 
+                echo '<td>'. $row['year'] .'</td>'; 
+                echo '<td>'. $row['genre_name'] .'</td>'; 
+                echo '<td>'. $row['type_name'] .'</td>'; 
+                echo '<td>'. $row['duration'] .'</td>'; 
+                
+            //echo '<td>'. '<a href="removeFromFav.php?song_id='. $row['song_id'] . '">Remove' . '</a></td>'; 
+            //echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">View' . '</a></td>'; 
+            echo "</tr>";
+
+            echo "BPM: " . $row['bpm'] . " | Energy: " . $row['energy'] . " | Danceability: "  . $row['danceability'] . " | Liveness: " . $row['liveness'] . " | Valence: " . $row['valence'] . " | Acousticness: ". $row['acousticness'] ." | Speechiness: ". $row['speechiness'] ." | Popularity: ". $row['popularity'];
+
         }
+        echo'</table>';
+        // foreach($result as $row){
+        //     echo $row['bpm'] . " | " . $row['energy'] . " | "  . $row['type_name'] . " | " . $row['genre_name'] . " | " . $row['year'] . " | " . $output->secToMin($row['duration']);
+        //     echo "<h3>Analysis Data<h3>";
+        //     echo "BPM: " . $row['bpm'] . " | Energy: " . $row['energy'] . " | Artist Type: "  . $row['type_name'] . " | Genre: " . $row['genre_name'] . " | Released: " . $row['year'] . " | Popularity: ";
+        // }
         ?>
     </section>
     <br>
