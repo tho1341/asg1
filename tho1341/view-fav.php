@@ -25,13 +25,22 @@ $favorites = $_SESSION["Favorites"];
 </head>
 <body>
     <?php
-        //function genFavRows()
-        
-        //foreach ($favorites as $fav){
-            //retrieve the song with songid
-            //$song = $songs[$fav];
+        //function genFavRows($favArray, $artistDB, $genreDB){
+
+            foreach ($FavArray as $songs){
+                $artist = $artistDB -> getArtistName($songs["artist_id"]);
+                $genre = $genreDB -> getGenreName($songs["genre_id"]);
+            }
         //}
     ?>
+
+                <tr>
+                    <td><?=$songs["title"]?></td>
+                    <td><?=$artist["artist"]?></td>
+
+
+                </tr>
+        
 
         <br>
         <a href="emptyFavorites.php">Empty Favorites</a>
