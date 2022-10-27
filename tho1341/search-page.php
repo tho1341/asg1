@@ -9,13 +9,10 @@ $artists = $musicGateway->getAllArtist();
 $genre = $musicGateway->getAllGenre();
 } catch (Exception $e) { die( $e->getMessage() ); }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylesheet.css">
     <title>search-page</title>
 </head>
@@ -30,7 +27,6 @@ $genre = $musicGateway->getAllGenre();
                 <li> <a href="home-page.php">Home</a></li>
                 <li> <a href="search-page.php">Search</a></li>
                 <li> <a href="browse-results.php">Browse</a></li>
-                <!-- <li> <form method="post" action="browse-results.php"><input type="submit" value="Browse" name='showAll'></form></li> -->
                 <li> <a href="view-fav.php">Favourites</a></li>
             </ul>
         </nav>

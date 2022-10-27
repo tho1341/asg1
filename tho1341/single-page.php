@@ -16,10 +16,8 @@ try{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="stylesheet.css">
-    <title>COMP 3512 Assign1</title>
+    <title>single-page</title>
 </head>
 <body>
     <header>
@@ -32,12 +30,10 @@ try{
                 <li> <a href="home-page.php">Home</a></li>
                 <li> <a href="search-page.php">Search</a></li>
                 <li> <a href="browse-results.php">Browse</a></li>
-                <!-- <li> <form method="post" action="browse-results.php"><input type="submit" value="Browse" name='showAll'></form></li> -->
                 <li> <a href="view-fav.php">Favourites</a></li>
             </ul>
         </nav>
     </header>
-
     <div class="title">
         <h2>Song Information<h2>
     </div>
@@ -45,7 +41,6 @@ try{
     <section class="song">
         <?php
         $output = new listOutput();
-
         foreach($result as $row){
             echo $row['title'] . " | " . $row['artist_name'] . " | "  . $row['type_name'] . " | " . $row['genre_name'] . " | " . $row['year'] . " | " . $output->secToMin($row['duration']);
             echo "<h3>Analysis Data<h3>";
