@@ -2,16 +2,16 @@
 
 require_once 'includes/config.inc.php';
 require_once 'includes/db-classes.inc.php';
-//require_once 'browse-results-helper.php';
+require_once 'browse-results-helper.php';
+
+try{
 
 $conn = DBHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
-
 $musicGateway = new MusicDB($conn);
 
+$out = new listOutput();
 
-
-$music = $musicGateway->getTopGenres();
-
+} catch (Exception $e) { die( $e->getMessage() ); }
 
 
 ?>
@@ -27,18 +27,28 @@ $music = $musicGateway->getTopGenres();
     
 <?php
 
-foreach($music as $row){
- echo '<tr>';
- //echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">' . $row['title'] . '</a></td>'; 
-     echo '<td>'. $row['genre_name'] .'</td>'; 
-     //echo '<td>'. $row['year'] .'</td>'; 
-     //echo '<td>'. $row['genre_name'] .'</td>'; 
-     //echo '<td>'. $row['popularity'] .'</td>'; 
- //echo '<td>'. '<a href="view-fav.php?song_id='. $row['song_id'] . '">Add to Favourites' . '</a></td>'; 
- //echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">View' . '</a></td>'; 
- //echo "<br>";
- echo "<br>";
-}
+echo "<div>";
+//genres
+$music = $musicGateway->getTopGenres();
+$out->outputGenre($music);
+echo "</div>";
+
+echo "<div>";
+//top artists
+$music = $musicGateway->getTopArtists();
+$out->outputArtist($music);
+echo "</div>";
+
+echo "<div>";
+//most popular songs
+$music = $musicGateway->getPopular();
+$out->outputSongs($music);
+echo "</div>";
+
+
+
+
+
 
 
 

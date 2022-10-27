@@ -15,5 +15,29 @@ class listOutput{
             echo "<br>";
         }
     }
+
+    function outputGenre($music){
+    foreach($music as $row){
+        echo '<ul>';
+            echo '<li>'. $row['genre_name'] .'</li>'; 
+        echo '</ul>';
+       }
+    }
+
+    function outputArtist($music){
+    foreach($music as $row){
+        echo '<ul>';
+            echo '<li>'. $row['artist_name'] .'</li>'; 
+        echo "</ul>";
+       }
+    }
+
+    function outputSongs($music){
+        foreach($music as $row){
+            echo '<ul>';
+            echo '<li>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">' . $row['title'] . '</a>' . ' by ' . $row['artist_name'] . '</li>';  
+            echo "</ul>";
+           }
+        }
 }
 ?>
