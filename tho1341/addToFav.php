@@ -18,6 +18,8 @@ if(array_search($_GET["song_id"], $favorites) == false){
     $favorites[] = $_GET["song_id"];
 }
 
+//resave array for user session
 $_SESSION["Favorites"] = $favorites;
 
+//redirect to view-fav page
 header("Location: view-fav.php");
