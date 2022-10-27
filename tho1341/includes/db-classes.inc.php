@@ -127,13 +127,31 @@ class MusicDB {
         return $statement->fetchAll(); 
     }
     public function getTopArtists() { 
-        $sql = "SELECT artists.artist_name
-                FROM songs INNER JOIN genres ON genres.genre_id = songs.genre_id
-                GROUP BY genres.genre_name ORDER BY count(song_id) DESC"; 
+        $sql = "SELECT artists.artist_name, count(song_id)
+                FROM songs INNER JOIN artists ON artists.artist_id = songs.artist_id
+                GROUP BY artists.artist_name ORDER BY count(song_id) DESC
+                LIMIT 10"; 
         $statement = DBHelper::runQuery($this->pdo, $sql, null); 
         return $statement->fetchAll(); 
     }
-
+    public function getPopular() { 
+        $sql = "SELECT title, artists.artist_name, popularity 
+                FROM songs INNER JOIN artists ON artists.artist_id = songs.artist_id 
+                GROUP BY artists.artist_name ORDER BY popularity DESC
+                LIMIT 10"; 
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
+        return $statement->fetchAll(); 
+    }
+    //not done
+    public function getOneHit() { 
+        $sql = "SELECT title, artists.artist_name, popularity
+                FROM songs INNER JOIN artists ON artists.artist_id = songs.artist_id 
+                WHERE 
+                GROUP BY artists.artist_name ORDER BY popularity DESC
+                LIMIT 10"; 
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
+        return $statement->fetchAll(); 
+    }
 
 } 
 
