@@ -23,8 +23,8 @@ $favorites = $_SESSION["Favorites"];
     <?php
         foreach ($favorites as $fav){
             //retrieve the song with songid
-            //$song = $songs[$fav];
-            if($key = array_search($_GET["song_id"], $favorites)){
+            $song = $songs[$fav];
+            if($key = array_search($_POST["song_id"], $favorites)){
                 array_push($favorites[$key]);
             }
     ?>
