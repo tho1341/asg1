@@ -16,7 +16,7 @@ try{
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="css/stylesheet.css">
     <title>single-page</title>
 </head>
 <body>
