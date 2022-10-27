@@ -1,27 +1,17 @@
 <?php
-
 require_once 'includes/config.inc.php';
 require_once 'includes/db-classes.inc.php';
 require_once 'page-helper.php';
-
-
-
 try{
     $conn = DBHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
     $musicGateway = new MusicDB($conn);
-
     if(isset($_GET['song_id'])){
         $result = $musicGateway->getAllForSingle($_GET['song_id']);
     }
 }catch (PDOException $e){
     die( $e->getMessage() ); 
 }
-
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +33,6 @@ try{
                 <li> <a href="search-page.php">Search</a></li>
                 <li> <a href="browse-results.php">Browse</a></li>
                 <!-- <li> <form method="post" action="browse-results.php"><input type="submit" value="Browse" name='showAll'></form></li> -->
-
                 <li> <a href="view-fav.php">Favourites</a></li>
             </ul>
         </nav>
