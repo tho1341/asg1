@@ -25,14 +25,15 @@ $genre = $musicGateway->getAllGenre();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
     <title>Document</title>
 </head>
 <body>
     
-    <form action="browse-results.php" method="post">
-            
+<div class="searchForm">
+        <form action="browse-results.php" method="post">
             <label>Title:</label>
-            <input type="text" name="title" size=50/>
+            <input type="text" name="title" size=30/>
             
             <label>Artist:</label>
             <select name="artists">
@@ -54,17 +55,16 @@ $genre = $musicGateway->getAllGenre();
                     }
 
                 ?>
-            </select>
-
+            </select>     
             <br>
 
             <label>Year</label>
             <br>
             <label><input type="radio" name="year" value="less">Less: </label>
-                <input type="text" name="lessText" size=50/>
+                <input type="text" name="lessText" size=30/>
             <br>
             <label><input type="radio" name="year" value="great">Greater: </label>
-                <input type="text" name="greatText" size=50/>
+                <input type="text" name="greatText" size=30/>
             
             <br>
             <br>
@@ -81,7 +81,7 @@ $genre = $musicGateway->getAllGenre();
 
             <input type="submit" value="Search">
         </form>
-
+</div>
 
 </body>
 </html>
