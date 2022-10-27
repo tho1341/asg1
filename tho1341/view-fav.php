@@ -19,25 +19,14 @@ $favorites = $_SESSION["Favorites"];
     <title>view-fav</title>
 </head>
 <body>
-    <ul>
     <?php
+        function genFavRows()
+        
         foreach ($favorites as $fav){
             //retrieve the song with songid
-            $song = $songs[$fav];
-            if($key = array_search($_POST["song_id"], $favorites)){
-                array_push($favorites[$key]);
-            }
+            //$song = $songs[$fav];
+            
     ?>
-            <li>
-            <p <?= $song[0] ?>></p>
-            <br>
-            <?= $song[1] ?>
-            <br>
-            </li>
-        <?php
-        }
-        ?>
-        </ul>
 
         <br>
         <a href="emptyFavorites.php">Empty Favorites</a>
