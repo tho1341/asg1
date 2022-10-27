@@ -10,7 +10,7 @@ try{
     $conn = DBHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
     $musicGateway = new MusicDB($conn);
 
-    if(isset($_POST['view'])){
+    if(isset($_GET['view'])){
         $result = $musicGateway->getAllForSingle($_GET['view']);
     }
     
