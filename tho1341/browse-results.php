@@ -79,7 +79,9 @@ else {
         }
         else{
             $output = new listOutput();
+            echo'<table>';
             $output->listAll($music);
+            echo'</table>';
         }
     ?>
     <footer class="foot">

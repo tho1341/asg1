@@ -74,5 +74,30 @@ class listOutput{
         $time = $min . ":" . $newSec;
         return $time;
     }
+
+    function singleList($result){
+        echo'<table>';
+        echo '<tr>';
+            echo'<th>Title</th>';
+            echo'<th>Artist</th>';
+            echo'<th>Year</th>';
+            echo'<th>Genre</th>';
+            echo'<th>Genre Type</th>';
+            echo'<th>Duration</th>';
+            echo'<th>More Song Details!</th>';
+        echo'</tr>';
+        foreach($result as $row){
+            echo '<tr>';
+                echo '<td>'. $row['title'] .'</td>'; 
+                echo '<td>'. $row['artist_name'] .'</td>'; 
+                echo '<td>'. $row['year'] .'</td>'; 
+                echo '<td>'. $row['genre_name'] .'</td>'; 
+                echo '<td>'. $row['type_name'] .'</td>'; 
+                echo '<td>'. listOutput::secToMin($row['duration']) .'</td>'; echo '<td>'."BPM: " . $row['bpm'] . " | Energy: " . $row['energy'] . " | Danceability: "  . $row['danceability'] . " | Liveness: " . $row['liveness'] . " | Valence: " . $row['valence'] . 
+            " | Acousticness: ". $row['acousticness'] ." | Speechiness: ". $row['speechiness'] ." | Popularity: ". $row['popularity'].'</td>';
+            echo "</tr>";
+        }
+        echo'</table>';
+    }
 }
 ?>

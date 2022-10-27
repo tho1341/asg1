@@ -87,22 +87,22 @@ body {
 }
 a{
     color: lightgoldenrodyellow;
-  }
-  table, tr, td {
+}
+table, tr, td {
     border: 1px solid;
     padding: 0.2em;
     margin: 0.2em;
-  }
-  table{
+}
+table{
     color: white;
     margin-left: auto;
     margin-right: auto;
     background-color:var(--main-bg-color);
-  }
-  button{
+}
+button{
     margin: 0.2em;
     padding: 0.2em;
     background-color: var(--main-bg-color);
     color: white;
-  }
+}
 
