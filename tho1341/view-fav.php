@@ -32,6 +32,17 @@ $musicGateway = new MusicDB($conn);
     <?php
         //function genFavRows($favArray, $artistDB, $genreDB){
 
+function outputFavSongs($favSongs){
+            foreach($favSongs as $row){
+                echo '<tr>';
+                echo '<td>'.$row['art_name']. '</td>';
+                echo '</tr>';
+            }
+
+        } 
+
+
+
             foreach ($favorites as $fav){
                 $favSongs = $musicGateway -> getByIDFav($fav);
                 //$outputFavSongs = $musicGateway -> outputFavSong($favSongs);
@@ -41,6 +52,12 @@ $musicGateway = new MusicDB($conn);
                 }
 
             }
+
+        
+
+
+
+
         //}
     
 try{
