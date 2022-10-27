@@ -11,7 +11,7 @@ class listOutput{
                 echo '<td>'. $row['popularity'] .'</td>'; 
             echo '<td>'. '<a href="view-fav.php?song_id='. $row['song_id'] . '">Add to Favourites' . '</a></td>'; 
             echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">View' . '</a></td>'; 
-            echo "<br>";
+            echo "<tr>";
             echo "<br>";
         }
     }
