@@ -30,25 +30,27 @@ class listOutput{
         }
     }
     function outputGenre($music){
-    foreach($music as $row){
         echo '<ul>';
+    foreach($music as $row){
             echo '<li>'. $row['genre_name'] .'</li>'; 
-        echo '</ul>';
-       }
+        
+       }echo '</ul>';
     }
     function outputArtist($music){
-    foreach($music as $row){
         echo '<ul>';
+    foreach($music as $row){
+        
             echo '<li>'. $row['artist_name'] .'</li>'; 
-        echo "</ul>";
-       }
+        
+       }echo "</ul>";
     }
     function outputSongs($music){
+        echo '<ul>';
         foreach($music as $row){
-            echo '<ul>';
+            
             echo '<li>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">' . $row['title'] . '</a>' . ' by ' . $row['artist_name'] . '</li>';  
-            echo "</ul>";
-           }
+            
+           }echo "</ul>";
     }
     //single page 
     function secToMin($sec){

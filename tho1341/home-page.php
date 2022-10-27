@@ -13,6 +13,7 @@ $out = new listOutput();
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/grid.css">
     <title>Home-page</title>
 </head>
 <body>
@@ -26,57 +27,61 @@ $out = new listOutput();
                 <li> <a href="home-page.php">Home</a></li>
                 <li> <a href="search-page.php">Search</a></li>
                 <li> <a href="browse-results.php">Browse</a></li>
-                <!-- <li> <form method="post" action="browse-results.php"><input type="submit" value="Browse" name='showAll'></form></li> -->
                 <li> <a href="view-fav.php">Favourites</a></li>
             </ul>
         </nav>
     </header>
 <?php
-echo "<div>";
-//genres
-$music = $musicGateway->getTopGenres();
-$out->outputGenre($music);
-echo "</div>";
-echo "<br>";
+echo "<div class='grid-container'>";
+    echo "<div class='grid-item'>";
+    echo "<h3>Top Genres</h3>";
+    //genres
+    $music = $musicGateway->getTopGenres();
+    $out->outputGenre($music);
+    echo "</div>";
 
-echo "<div>";
-//top artists
-$music = $musicGateway->getTopArtists();
-$out->outputArtist($music);
-echo "</div>";
-echo "<br>";
+    echo "<div class='grid-item'>";
+    echo "<h3>Top Artists</h3>";
+    $music = $musicGateway->getTopArtists();
+    $out->outputArtist($music);
+    echo "</div>";
 
-echo "<div>";
-//most popular songs
-$music = $musicGateway->getPopular();
-$out->outputSongs($music);
-echo "</div>";
-echo "<br>";
+    echo "<div class='grid-item'>";
+    echo "<h3>Most Popular Songs</h3>";
+    $music = $musicGateway->getPopular();
+    $out->outputSongs($music);
+    echo "</div>";
 
-$music = $musicGateway->getOneHit();
-$out->outputSongs($music);
-echo "</div>";
-echo "<br>";
+    echo "<div class='grid-item'>";
+    echo "<h3>One Hit Wonders</h3>";
+    $music = $musicGateway->getOneHit();
+    $out->outputSongs($music);
+    echo "</div>";
 
-$music = $musicGateway->getAcoustic();
-$out->outputSongs($music);
-echo "</div>";
-echo "<br>";
+    echo "<div class='grid-item'>";
+    echo "<h3>Longest Acoustic Songs</h3>";
+    $music = $musicGateway->getAcoustic();
+    $out->outputSongs($music);
+    echo "</div>";
 
-$music = $musicGateway->getClub();
-$out->outputSongs($music);
-echo "</div>";
-echo "<br>";
+    echo "<div class='grid-item'>";
+    echo "<h3>At the Club</h3>";
+    $music = $musicGateway->getClub();
+    $out->outputSongs($music);
+    echo "</div>";
 
-$music = $musicGateway->getRunningSongs();
-$out->outputSongs($music);
-echo "</div>";
-echo "<br>";
+    echo "<div class='grid-item'>";
+    echo "<h3>Running Songs</h3>";
+    $music = $musicGateway->getRunningSongs();
+    $out->outputSongs($music);
+    echo "</div>";
 
-$music = $musicGateway->getStudy();
-$out->outputSongs($music);
+    echo "<div class='grid-item'>";
+    echo "<h3>Studying</h3>";
+    $music = $musicGateway->getStudy();
+    $out->outputSongs($music);
+    echo "</div>";
 echo "</div>";
-
 ?>
 <footer class="foot">
         <p>
