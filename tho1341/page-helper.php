@@ -1,7 +1,5 @@
 <?php
-
 class listOutput{
-
     //browse page outputs
     function listAll($music){
         foreach($music as $row){
@@ -17,7 +15,6 @@ class listOutput{
             echo "<br>";
         }
     }
-
     function listAllRemove($music){
         foreach($music as $row){
             echo '<tr>';
@@ -32,7 +29,6 @@ class listOutput{
             echo "<br>";
         }
     }
-
     function outputGenre($music){
     foreach($music as $row){
         echo '<ul>';
@@ -40,7 +36,6 @@ class listOutput{
         echo '</ul>';
        }
     }
-
     function outputArtist($music){
     foreach($music as $row){
         echo '<ul>';
@@ -48,7 +43,6 @@ class listOutput{
         echo "</ul>";
        }
     }
-
     function outputSongs($music){
         foreach($music as $row){
             echo '<ul>';
@@ -56,7 +50,6 @@ class listOutput{
             echo "</ul>";
            }
     }
-
     //single page 
     function secToMin($sec){
         $min = ($sec / 60) % 60;
@@ -65,6 +58,5 @@ class listOutput{
         $time = $min . ":" . $newSec;
         return $time;
     }
-        
 }
 ?>
