@@ -2,7 +2,7 @@
 
 require_once 'includes/config.inc.php';
 require_once 'includes/db-classes.inc.php';
-require_once 'single-page-helper.php';
+require_once 'page-helper.php';
 
 
 
@@ -13,13 +13,6 @@ try{
     if(isset($_GET['song_id'])){
         $result = $musicGateway->getAllForSingle($_GET['song_id']);
     }
-    
-    
-
-
-
-
-
 }catch (PDOException $e){
     die( $e->getMessage() ); 
 }
@@ -62,7 +55,7 @@ try{
     <br>
     <section class="song">
         <?php
-        $output = new Output();
+        $output = new listOutput();
 
         foreach($result as $row){
             echo $row['title'] . " | " . $row['artist_name'] . " | "  . $row['type_name'] . " | " . $row['genre_name'] . " | " . $row['year'] . " | " . $output->secToMin($row['duration']);

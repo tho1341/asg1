@@ -1,21 +1,21 @@
 <?php
 require_once 'includes/config.inc.php';
 require_once 'includes/db-classes.inc.php';
-require_once 'browse-results-helper.php';
+require_once 'page-helper.php';
 
 session_start();
-//initializing empty array
-// if(!isset($_SESSION["Favorites"])){
-//     $_SESSION["Favorites"] =[];
-// }
-//retrieve array for this session
+
 $favorites = $_SESSION["Favorites"];
 
-//$music = $musicGateway->getTopGenres();
+
+try{
 $conn = DBHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
 
 $musicGateway = new MusicDB($conn);
+$output = new listOutput();
 
+
+} catch (Exception $e) { die( $e->getMessage() ); }
 
 
 ?>
@@ -29,54 +29,13 @@ $musicGateway = new MusicDB($conn);
     <title>view-fav</title>
 </head>
 <body>
-    <?php
-        //function genFavRows($favArray, $artistDB, $genreDB){
 
-function outputFavSongs($favSongs){
-            foreach($favSongs as $row){
-                echo '<tr>';
-                echo '<td>'.$row['art_name']. '</td>';
-                echo '</tr>';
-            }
-
-        } 
-
-
-
-            foreach ($favorites as $fav){
-                $favSongs = $musicGateway -> getByIDFav($fav);
-                //$outputFavSongs = $musicGateway -> outputFavSong($favSongs);
-                foreach($favSongs as $row){
-                    echo $row["title"];
-                    //echo $_GET["song_id"];
-                }
-
-            }
-
-        
-
-
-
-
-        //}
-    
-try{
-
-$conn = DBHelper::createConnection(array(DBCONNSTRING,DBUSER,DBPASS));
-
-$musicGateway = new MusicDB($conn);
-
-//if(isset($_POST['artists']) && !empty($_POST['artists'])){
-
-
-} catch (Exception $e) { die( $e->getMessage() ); }
-   
-        if (!($_SERVER['REQUEST_METHOD'] == 'POST')){
-            $output = new listOutput();
-            $music = $musicGateway->GetByIDFav();
-            $output->listAllRemove($music);
+<?php
+        foreach ($favorites as $fav){
+            $favSongs = $musicGateway -> getByIDFav($fav);
+            $outputFavSongs = $output -> listAllRemove($favSongs);
         }
-        
+
 ?>
 
     <form action="browse-results.php" method="post">
