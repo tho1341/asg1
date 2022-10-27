@@ -12,11 +12,11 @@ if ( !isset($_SESSION["Favorites"]) ) {
 //retrieve fav array
 $favorites = $_SESSION["Favorites"];
 //add passed song id to fav array
-$favorites[] = $_GET["song_id"];
+//$favorites[] = $_GET["song_id"];
 //resave array
-$_SESSION["Favorites"] = $favorites;
+//$_SESSION["Favorites"] = $favorites;
 //redirect to fav page
-header("Location: view-fav.php");
+//header("Location: view-fav.php");
 
 try{
 
