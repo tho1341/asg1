@@ -54,8 +54,7 @@ class MusicDB {
     //gets all using base sql
     public function getAll() { 
         $sql = self::$baseSQL; 
-        $statement = 
-        DBHelper::runQuery($this->pdo, $sql, null); 
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
         return $statement->fetchAll(); 
     } 
 
@@ -118,6 +117,22 @@ class MusicDB {
         return $statement->fetchAll();
     } 
 
+    //home page functions
+    public function getTopGenres() { 
+        $sql = "SELECT genres.genre_name, count(song_id) as Number
+                FROM songs INNER JOIN genres ON genres.genre_id = songs.genre_id
+                GROUP BY genres.genre_name ORDER BY count(song_id) DESC
+                LIMIT 10"; 
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
+        return $statement->fetchAll(); 
+    }
+    public function getTopArtists() { 
+        $sql = "SELECT artists.artist_name
+                FROM songs INNER JOIN genres ON genres.genre_id = songs.genre_id
+                GROUP BY genres.genre_name ORDER BY count(song_id) DESC"; 
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
+        return $statement->fetchAll(); 
+    }
 
 
 } 
