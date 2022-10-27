@@ -8,6 +8,11 @@ if(!isset($_SESSION["Favorites"])){
 }
 //retrieve array for this session
 $favorites = $_SESSION["Favorites"];
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -20,12 +25,12 @@ $favorites = $_SESSION["Favorites"];
 </head>
 <body>
     <?php
-        function genFavRows()
+        //function genFavRows()
         
-        foreach ($favorites as $fav){
+        //foreach ($favorites as $fav){
             //retrieve the song with songid
             //$song = $songs[$fav];
-            
+        //}
     ?>
 
         <br>
