@@ -32,26 +32,45 @@ echo "<div>";
 $music = $musicGateway->getTopGenres();
 $out->outputGenre($music);
 echo "</div>";
+echo "<br>";
 
 echo "<div>";
 //top artists
 $music = $musicGateway->getTopArtists();
 $out->outputArtist($music);
 echo "</div>";
+echo "<br>";
 
 echo "<div>";
 //most popular songs
 $music = $musicGateway->getPopular();
 $out->outputSongs($music);
 echo "</div>";
+echo "<br>";
 
+$music = $musicGateway->getOneHit();
+$out->outputSongs($music);
+echo "</div>";
+echo "<br>";
 
+$music = $musicGateway->getAcoustic();
+$out->outputSongs($music);
+echo "</div>";
+echo "<br>";
 
+$music = $musicGateway->getClub();
+$out->outputSongs($music);
+echo "</div>";
+echo "<br>";
 
+$music = $musicGateway->getRunningSongs();
+$out->outputSongs($music);
+echo "</div>";
+echo "<br>";
 
-
-
-
+$music = $musicGateway->getStudy();
+$out->outputSongs($music);
+echo "</div>";
 
 ?>
 

@@ -146,23 +146,67 @@ class MusicDB {
         return $statement->fetchAll(); 
     }
     public function getPopular() { 
-        $sql = "SELECT title, artists.artist_name, popularity 
+        $sql = "SELECT title, artists.artist_name, popularity, song_id
                 FROM songs INNER JOIN artists ON artists.artist_id = songs.artist_id 
                 GROUP BY artists.artist_name ORDER BY popularity DESC
                 LIMIT 10"; 
         $statement = DBHelper::runQuery($this->pdo, $sql, null); 
         return $statement->fetchAll(); 
     }
-    //not done
+    
     public function getOneHit() { 
-        $sql = "SELECT title, artists.artist_name, popularity
-                FROM songs INNER JOIN artists ON artists.artist_id = songs.artist_id 
-                WHERE 
-                GROUP BY artists.artist_name ORDER BY popularity DESC
+        $sql = "SELECT song_id, title, artist_name, count(artist_name) as artist_count
+                FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+                GROUP BY artist_name
+                HAVING artist_count=1
+                ORDER BY popularity DESC
                 LIMIT 10"; 
         $statement = DBHelper::runQuery($this->pdo, $sql, null); 
         return $statement->fetchAll(); 
     }
+
+    public function getAcoustic() { 
+        $sql = "SELECT song_id, title, artist_name, acousticness, duration
+                FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+                WHERE acousticness > 40
+                ORDER BY duration DESC
+                LIMIT 10";
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
+        return $statement->fetchAll(); 
+    }
+
+    public function getClub() { 
+        $sql = "SELECT song_id, title, artist_name, danceability, ((danceability*1.6) + (energy*1.4)) as club
+                FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+                WHERE danceability > 80
+                ORDER BY club DESC
+                LIMIT 10";
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
+        return $statement->fetchAll(); 
+    }
+
+    public function getRunningSongs() { 
+        $sql = "SELECT song_id, title, artist_name, bpm, ((valence*1.6) + (energy*1.3)) as run
+                FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+                WHERE bpm >= 120 AND bpm <=125
+                ORDER BY run DESC
+                LIMIT 10";
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
+        return $statement->fetchAll(); 
+    }
+
+
+    public function getStudy() { 
+        $sql = "SELECT song_id, title, artist_name, bpm, speechiness, ((acousticness*0.8) + (100 - speechiness) + (100 - valence)) AS study
+                FROM songs INNER JOIN artists on songs.artist_id=artists.artist_id
+                WHERE bpm >= 100 AND bpm <= 115 AND speechiness <=20
+                ORDER BY study DESC
+                LIMIT 10"; 
+        $statement = DBHelper::runQuery($this->pdo, $sql, null); 
+        return $statement->fetchAll(); 
+    }
+
+
 
 } 
 
