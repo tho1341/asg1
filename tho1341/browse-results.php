@@ -65,11 +65,14 @@ else {
             </ul>
         </nav>
     </header>
+    <a href="browse-results.php"><button>Show All</button></a>
     <?php
         if (!($_SERVER['REQUEST_METHOD'] == 'POST')){
             $output = new listOutput();
             $music = $musicGateway->getAll();
+            echo'<table>';
             $output->listAll($music);
+            echo'</table>';
         }
         else if($music == 0){
             echo "No input. Please Enter Search Field";
@@ -79,9 +82,6 @@ else {
             $output->listAll($music);
         }
     ?>
-    <form action="browse-results.php" method="post">
-    <input type="submit" value="Show All" name='showAll'>
-    </form>
     <footer class="foot">
         <p>
             COMP 3512 Web 2 | 

@@ -15,6 +15,7 @@ try{
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/grid.css">
     <title>view-fav</title>
 </head>
 <body>
@@ -32,19 +33,16 @@ try{
             </ul>
         </nav>
     </header>
+        <a href="browse-results.php"><button>Show All</button></a>
+        <a href="emptyFavorites.php"><button>Empty Favorites</button></a>
 <?php
         foreach ($favorites as $fav){
+            echo'<table>';
             $favSongs = $musicGateway -> getByIDFav($fav);
             $outputFavSongs = $output -> listAllRemove($favSongs);
+            echo'</table>';
         }
-
 ?>
-    <form action="browse-results.php" method="post">
-    <input type="submit" value="Show All" name='showAll'>
-    </form>
-        <br>
-        <a href="emptyFavorites.php">Empty Favorites</a>
-        <br>
         <footer class="foot">
         <p>
             COMP 3512 Web 2 | 

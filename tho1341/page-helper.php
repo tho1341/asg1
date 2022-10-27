@@ -2,7 +2,15 @@
 class listOutput{
     //browse page outputs
     function listAll($music){
+        echo '<tr>';
+            echo'<th>Title</th>';
+            echo'<th>Artist</th>';
+            echo'<th>Year</th>';
+            echo'<th>Genre</th>';
+            echo'<th>Popularity</th>';
+        echo'</tr>';
         foreach($music as $row){
+            
             echo '<tr>';
             echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">' . $row['title'] . '</a></td>'; 
                 echo '<td>'. $row['artist_name'] .'</td>'; 
@@ -11,12 +19,19 @@ class listOutput{
                 echo '<td>'. $row['popularity'] .'</td>'; 
             echo '<td>'. '<a href="addToFav.php?song_id='. $row['song_id'] . '">Add to Favourites' . '</a></td>'; 
             echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">View' . '</a></td>'; 
-            echo "<tr>";
-            echo "<br>";
+            echo "</tr>";
         }
     }
     function listAllRemove($music){
+        echo '<tr>';
+            echo'<th>Title</th>';
+            echo'<th>Artist</th>';
+            echo'<th>Year</th>';
+            echo'<th>Genre</th>';
+            echo'<th>Popularity</th>';
+        echo'</tr>';
         foreach($music as $row){
+            
             echo '<tr>';
             echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">' . $row['title'] . '</a></td>'; 
                 echo '<td>'. $row['artist_name'] .'</td>'; 
@@ -25,8 +40,7 @@ class listOutput{
                 echo '<td>'. $row['popularity'] .'</td>'; 
             echo '<td>'. '<a href="removeFromFav.php?song_id='. $row['song_id'] . '">Remove' . '</a></td>'; 
             echo '<td>'. '<a href="single-page.php?song_id='. $row['song_id'] . '">View' . '</a></td>'; 
-            echo "<tr>";
-            echo "<br>";
+            echo "</tr>";
         }
     }
     function outputGenre($music){
