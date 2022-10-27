@@ -2,7 +2,21 @@
 require_once 'includes/config.inc.php';
 require_once 'includes/db-classes.inc.php';
 require_once 'browse-results-helper.php';
+session_start();
 
+//check if session already running 
+if ( !isset($_SESSION["Favorites"]) ) { 
+    // initialize an empty array that will contain the favorites
+    $_SESSION["Favorites"] = []; 
+   } 
+//retrieve fav array
+$favorites = $_SESSION["Favorites"];
+//add passed song id to fav array
+$favorites[] = $_GET["song_id"];
+//resave array
+$_SESSION["Favorites"] = $favorites;
+//redirect to fav page
+header("Location: view-fav.php");
 
 try{
 
@@ -40,6 +54,7 @@ else {
 }
 
 } catch (Exception $e) { die( $e->getMessage() ); }
+
 
 ?>
 

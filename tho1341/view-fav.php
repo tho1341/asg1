@@ -7,7 +7,7 @@ if(!isset($_SESSION["Favorites"])){
     $_SESSION["Favorites"] =[];
 }
 //retrieve array for this session
-$Favorites = $_SESSION["Favorites"];
+$favorites = $_SESSION["Favorites"];
 ?>
 
 <!DOCTYPE html>
@@ -21,14 +21,17 @@ $Favorites = $_SESSION["Favorites"];
 <body>
     <ul>
     <?php
-        foreach ($Favorites as $fav){
+        foreach ($favorites as $fav){
             //retrieve the song with songid
-            $song = $data[$fav];
+            //$song = $songs[$fav];
+            if($key = array_search($_GET["song_id"], $favorites)){
+                array_push($favorites[$key]);
+            }
     ?>
             <li>
             <p <?= $song[0] ?>></p>
             <br>
-            <?= $painting[1] ?>
+            <?= $song[1] ?>
             <br>
             </li>
         <?php
