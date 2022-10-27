@@ -118,7 +118,7 @@ class MusicDB {
     } 
 
     //favorite functions 
-    public function GetByIDFav($songID){
+    public function getByIDFav($songID){
         $sql = "SELECT song_id, title, songs.artist_id, genres.genre_name, artists.artist_name, year, popularity
                 FROM songs
                 JOIN artists ON artists.artist_id = songs.artist_id

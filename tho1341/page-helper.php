@@ -66,6 +66,16 @@ class listOutput{
         return $time;
     }
 
+    //header for each page
+    function header(){
+        echo "<!DOCTYPE html>";
+        echo"<html lang=en>";
+        echo"<head>";
+            echo"<title>COMP 3512 Assign1</title>";
+            echo"<meta charset=utf-8>";
+            echo"<link rel='stylesheet' href='stylesheet.css'>";
+        echo"</head>";
+    }
         
 }
 ?>
