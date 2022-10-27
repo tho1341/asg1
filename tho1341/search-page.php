@@ -20,6 +20,21 @@ $genre = $musicGateway->getAllGenre();
     <title>search-page</title>
 </head>
 <body>
+<header>
+    <div class="head">
+        <h1>COMP 3512 Assign1<h1>
+        <h2>Tim Ho & Shahmir Qaiser<h2>
+    </div>
+        <nav>
+            <ul class="nav">
+                <li> <a href="home-page.php">Home</a></li>
+                <li> <a href="search-page.php">Search</a></li>
+                <li> <a href="browse-results.php">Browse</a></li>
+                <!-- <li> <form method="post" action="browse-results.php"><input type="submit" value="Browse" name='showAll'></form></li> -->
+                <li> <a href="view-fav.php">Favourites</a></li>
+            </ul>
+        </nav>
+    </header>
 <div class="searchForm">
         <form action="browse-results.php" method="post">
             <label>Title:</label>
@@ -63,5 +78,13 @@ $genre = $musicGateway->getAllGenre();
             <input type="submit" value="Search">
         </form>
 </div>
+<footer class="foot">
+        <p>
+            COMP 3512 Web 2 | 
+            <a href="https://github.com/tho1341">Timothy Ho</a> | 
+            <a href="https://github.com/sqais">Shahmir Qaiser</a> | 
+            <a href="https://github.com/tho1341/asg1.git">GitHub Repo</a>
+        </p>
+</footer>
 </body>
 </html>
