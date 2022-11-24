@@ -24,7 +24,7 @@ $out = new listOutput();
     </div>
         <nav>
             <ul class="nav">
-                <li> <a href="home-page.php">Home</a></li>
+                <li> <a href="index.php">Home</a></li>
                 <li> <a href="search-page.php">Search</a></li>
                 <li> <a href="browse-results.php">Browse</a></li>
                 <li> <a href="view-fav.php">Favourites</a></li>
